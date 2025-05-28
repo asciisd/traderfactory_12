@@ -43,7 +43,7 @@
         @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">
+    <body dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" class="antialiased font-cairo">
         @inertia
     </body>
 </html>

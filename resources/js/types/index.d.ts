@@ -24,13 +24,38 @@ export interface SharedData extends PageProps {
     auth: Auth;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
+    canLogin: boolean;
+    canRegister: boolean;
+    laravelVersion: string;
+    phpVersion: string;
+    progress: number;
+    settings: Settings;
+    locale: string;
+    currency: string;
+    language: string;
+    courses: string;
+    flash: Flash;
+}
+
+export interface Settings {
+    site_title: string;
+    site_subtitle: string;
+    site_description: string;
+    start_learning: string;
+    header_s3: string;
+}
+
+export interface Flash {
+    success: string;
+    failed: string;
 }
 
 export interface User {
     id: number;
-    name: string;
+    first_name: string;
+    last_name: string;
     email: string;
-    avatar?: string;
+    profile_photo_url?: string;
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;

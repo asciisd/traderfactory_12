@@ -9,10 +9,23 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
+        "asciisd/kashier": "^1.0",
         "inertiajs/inertia-laravel": "^2.0",
+        "interaction-design-foundation/nova-unlayer-field": "^2.2",
         "laravel/framework": "^12.0",
+        "laravel/horizon": "^5.31",
+        "laravel/nova": "^5.0",
+        "laravel/nova-log-viewer": "^1.0",
         "laravel/tinker": "^2.10.1",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "nagy/laravel-rating": "^1.0",
+        "outl1ne/nova-settings": "^6.0",
+        "outl1ne/nova-sortable": "^4.0",
+        "propaganistas/laravel-phone": "^6.0",
+        "sereny/nova-permissions": "^1.7",
+        "spatie/laravel-permission": "^6.17",
+        "spatie/laravel-sitemap": "^7.3",
         "tightenco/ziggy": "^2.4"
     },
     "require-dev": {
@@ -25,6 +38,12 @@
         "pestphp/pest": "^3.8",
         "pestphp/pest-plugin-laravel": "^3.2"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",

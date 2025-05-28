@@ -31,15 +31,32 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'phone' => 'required||phone|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'country' => 'required|string|max:2',
+            'terms' => 'required|accepted',
         ]);
 
+        $utm_data = null;
+        if (request()->hasCookie('utm')) {
+            $utm_data = json_decode(request()->cookie('utm'));
+        }
+
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'country' => $request->country,
             'password' => Hash::make($request->password),
+            'utm_source' => $utm_data->utm_source ?? null,
+            'utm_content' => $utm_data->utm_content ?? null,
+            'utm_medium' => $utm_data->utm_medium ?? null,
+            'utm_campaign' => $utm_data->utm_campaign ?? null,
+            'utm_term' => $utm_data->utm_term ?? null,
         ]);
 
         event(new Registered($user));
