@@ -1,44 +1,32 @@
 <script setup lang="ts">
-import SectionLesson from "@/Pages/Section/Partials/SectionLesson.vue";
-import ConfirmActionPopUp from "@/Components/ConfirmActionPopUp.vue";
-import {ref} from "vue";
-import {useForm} from "@inertiajs/vue3";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import LessonItem from '@/pages/sections/partials/LessonItem.vue';
+import { Section } from '@/types/courses';
 
-type Props = {
-    section: object,
-    canView: boolean
-};
-
-const props = defineProps<Props>()
-const open = ref(false)
-const form = useForm({
-    course_id: props.section.course_id,
-    price: props.section.course_price
-})
-
-const buyCourse = () => {
-    form.post(route('orders.create', ['course', props.section.course_id]))
+interface Props {
+    section: Section;
+    canView: boolean | null;
 }
+
+defineProps<Props>();
 </script>
 
 <template>
-    <div>
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-                <dl v-if="section.lessons" class="mt-6 space-y-6">
-                    <template v-for="lesson in section.lessons" :key="lesson.id">
-                        <SectionLesson :canView="canView" :lesson="lesson" @open="open = true"/>
-                    </template>
-                </dl>
-            </div>
-        </div>
-
-        <ConfirmActionPopUp v-if="!$page.props.auth.user" :open="open" confirmText="تسجيل الدخول"
-                            title="أنت غير مسجل لدينا برجاء تسجيل الدخول للأشتراك في الدورة" @close="open = false"
-                            @confirm="buyCourse"/>
-        <ConfirmActionPopUp v-if="$page.props.auth.user && !canView"
-                            :confirmText="section.course_price <= 0 ? 'ابدأ الدورة' : 'شراء'" :open="open"
-                            :title="section.course_price <= 0 ? 'برجاء الضغط على ابدأ الدورة لتتمكن من رؤية المحتوى' : 'برجاء شراء الدورة لتتمكن من رؤية المحتوى'"
-                            @close="open = false" @confirm="buyCourse"/>
-    </div>
+    <dl v-if="section.lessons" class="w-full space-y-6">
+        <Accordion type="single" class="w-full" collapsible>
+            <AccordionItem v-for="(lesson, idx) in section.lessons" :key="idx" :value="lesson.name">
+                <AccordionTrigger class="bg-primary p-4">{{ lesson.name }}</AccordionTrigger>
+                <AccordionContent>
+                    <div class="p-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <LessonItem v-for="(activity, activityIdx) in lesson.activities"
+                                    :key="activityIdx"
+                                    :activity="activity"
+                                    :canView="canView"
+                                    :course_price="section.course_price"
+                                    :course_id="section.course_id"/>
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    </dl>
 </template>

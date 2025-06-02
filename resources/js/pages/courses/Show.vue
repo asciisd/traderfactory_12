@@ -9,9 +9,9 @@ interface Props {
 defineProps<Props>();
 </script>
 <template>
-    <Head :title="course.metadata.title">
-        <meta :content="course.metadata.description" name="description" />
-        <meta :content="course.metadata.keywords" name="keywords" />
+    <Head :title="course.meta_title">
+        <meta :content="course.meta_description" name="description" />
+        <meta :content="course.meta_keywords" name="keywords" />
     </Head>
 
     <h1>This single course details</h1>

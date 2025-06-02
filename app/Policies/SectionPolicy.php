@@ -20,7 +20,7 @@ class SectionPolicy
      */
     public function view(User $user, Section $section): bool
     {
-        return true;
+        return $user->ownCourse($section->course_id);
     }
 
     /**

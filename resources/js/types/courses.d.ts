@@ -21,6 +21,14 @@ export interface Course {
     discount: string;
 }
 
+export interface Sections {
+    data: Section;
+}
+
+export interface SectionCan {
+    view: boolean;
+}
+
 export interface Section {
     title: string;
     name: string;
@@ -46,17 +54,62 @@ export interface Section {
     s3_image: string;
     video_options: string;
     is_free: boolean;
+    can: SectionCan;
 }
 
 export interface Lesson {
     name: string;
     duration: string;
     slug: string;
-    activities: string;
+    activities: Activity[];
     section_slug: string;
     meta_seo: string;
     meta_title: string;
     meta_description: string;
     meta_keywords: string;
     meta_image: string;
+}
+
+export interface Activity {
+    model: string;
+    item: Goal|Magazine|Visual;
+    title: string;
+    href: string;
+}
+
+export interface Goal {
+    id: number;
+    title: string;
+    points: string;
+    slug: string;
+    duration: string;
+    background_url: string;
+    user_progress: number;
+    icon: string;
+    href: string;
+    s3_image: string;
+}
+
+export interface Magazine {
+    id: number;
+    title: string;
+    slug: string;
+    duration: string;
+    user_progress: number;
+    icon: string;
+    href: string;
+    slides: string;
+}
+
+export interface Visual {
+    id: string;
+    title: string;
+    description: string;
+    slug: string;
+    duration: string;
+    duration_seconds: number;
+    video_url: string;
+    icon: string;
+    href: string;
+    user_progress: number;
 }

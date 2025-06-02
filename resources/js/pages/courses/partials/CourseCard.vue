@@ -4,6 +4,7 @@ import { Course } from '@/types/courses';
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import { computed, ref } from 'vue';
 import { ClockIcon } from 'lucide-vue-next';
+import { Link } from '@inertiajs/vue3';
 
 interface Props {
     courses: Course[];
@@ -52,11 +53,7 @@ const filteredCourses = computed(() => {
     <div class="scrollbar-hide overflow-x-auto py-16 lg:mx-auto lg:max-w-7xl lg:px-8 min-h-screen">
         <div class="grid grid-cols-1 gap-6 px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-0">
             <Card v-for="course in filteredCourses.sections" :key="course.slug" :class="['relative group cursor-pointer hover:scale-105 duration-200 hover:text-white overflow-hidden', `hover:${course.sections[0].color}`]">
-<!--                <div :class="[-->
-<!--                    'absolute top-4 z-[70] -right-16 w-48 rotate-45 rounded px-2 py-1 text-center text-gray-700 shadow-xl',-->
-<!--                    course.sections[0].is_free ? 'bg-green-300' : 'bg-yellow-300']">-->
-<!--                    {{ course.sections[0].is_free ? 'مجانا' : 'مدفوع' }}-->
-<!--                </div>-->
+                <Link :href="route('courses.sections.section', course)">
                 <div class="absolute z-[70] -right-16 w-48 rotate-45 rounded px-2 py-1 text-center text-gray-700 shadow-xl group-hover:text-white"
                 :class="course.sections[0].is_free ? 'bg-green-300' : 'bg-yellow-300'">
                     <p class="text-sm font-bold">{{ course.sections[0].is_free ? 'مجانا' : 'مدفوع' }}</p>
@@ -78,8 +75,8 @@ const filteredCourses = computed(() => {
                         </CardDescription>
                     </div>
                 </CardContent>
+                </Link>
             </Card>
-            <!--            <SectionCard v-for="course in filteredCourses.sections" :key="course.slug" :section="course.sections[0]" />-->
         </div>
     </div>
 </template>

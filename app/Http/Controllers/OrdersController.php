@@ -20,7 +20,8 @@ class OrdersController extends Controller
         };
 
         if ($this->model->ownedByUser()) {
-            return back()->with(['message' => 'أنت بالفعل مشترك فى هذا العنصر!']);
+            session()->flash('success', 'أنت بالفعل مشترك فى هذا العنصر!');
+            return back();
         }
 
         // If order has price.
@@ -42,14 +43,14 @@ class OrdersController extends Controller
         } else {
             // Register to free course/book.
             $this->model->freeOrder();
+            session()->flash('success', 'تم الإشتراك بنجاح');
 
             if ($type === 'book') {
                 // For free books, redirect to the download page
-                return redirect()->route('books.download.page', ['book' => $id])
-                    ->with(['success' => 'تم الإشتراك بنجاح']);
+                return redirect()->route('books.download.page', ['book' => $id]);
             }
 
-            return back()->with(['with' => 'تم الإشتراك بنجاح']);
+            return back();
         }
     }
 

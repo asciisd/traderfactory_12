@@ -41,7 +41,7 @@ class EmailOnEvent extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'event', 'model',
+        'id', 'title', 'event', 'eventable_id'
     ];
 
     /**
