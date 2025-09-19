@@ -4,6 +4,8 @@
 
 @import 'tw-animate-css';
 
+@plugin "@tailwindcss/typography";
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
@@ -95,6 +97,9 @@
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
 
+    --color-error: var(--destructive);
+    --color-error-foreground: var(--destructive-foreground);
+
     --color-info: var(--info);
     --color-info-foreground: var(--info-foreground);
 
@@ -157,6 +162,10 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
+    }
+    ::selection {
+        color: var(--primary-foreground);
+        background: var(--primary);
     }
 }
 

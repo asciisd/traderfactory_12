@@ -77,16 +77,22 @@ export interface Activity {
     href: string;
 }
 
+export interface Goals {
+    data: Goal
+}
+
 export interface Goal {
     id: number;
     title: string;
-    points: string;
+    section_title: string;
+    points: string[];
     slug: string;
     duration: string;
     background_url: string;
     user_progress: number;
     icon: string;
     href: string;
+    section_href: string;
     s3_image: string;
 }
 

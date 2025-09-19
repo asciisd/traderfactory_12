@@ -13,7 +13,7 @@ interface LanguageDict {
  * @param {Record<string, string | number | boolean>} replace - an object of key value pairs to replace in the string
  * @returns {string} - the translated string with replacements
  */
-export function __(key: string, replace: Record<string, string | number | boolean> = {}): string {
+export function $trans(key: string, replace: Record<string, string | number | boolean> = {}): string {
     // Get the current locale from page props or use 'en' as default
     const locale = (usePage().props.locale as string) || 'en';
 

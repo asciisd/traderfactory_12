@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GlossaryController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\LessonController;
@@ -17,9 +18,9 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('dashboard', DashboardController::class)
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
@@ -94,8 +95,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 //Route::middleware(['auth:sanctum', 'verified'])
 //    ->group(function () {
-//        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-//
 //        Route::put('user/generate_referral_token',
 //            [UserController::class, 'generateReferralToken'])->name('user.generate-referral-token');
 //    });

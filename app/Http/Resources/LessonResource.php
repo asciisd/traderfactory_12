@@ -52,7 +52,7 @@ class LessonResource extends JsonResource
             'model' => 'Goal',
             'item' => $this->resource->goal,
             'title' => 'ماذا ستتعلم في هذه الوحدة',
-            'href' => $this->resource->goal ? route('goals.show', $this->resource->goal) : '#',
+            'href' => $this->resource->goal ? route('goals.show', $this->resource->goal, false) : '#',
         ]);
     }
 
@@ -63,7 +63,7 @@ class LessonResource extends JsonResource
             'item' => $this->resource->magazine,
             'title' => 'لنبدأ التعلم',
             'href' => $this->resource->magazine ? route('magazines.show',
-                $this->resource->magazine) : '#',
+                $this->resource->magazine, false) : '#',
         ]);
     }
 
@@ -74,7 +74,7 @@ class LessonResource extends JsonResource
             'item' => $this->resource->revision,
             'title' => 'مراجعة سريعة',
             'href' => $this->resource->revision ? route('revisions.show',
-                $this->resource->revision) : '#',
+                $this->resource->revision, false) : '#',
         ]);
     }
 
@@ -84,7 +84,8 @@ class LessonResource extends JsonResource
             'model' => 'Todo',
             'item' => $this->resource->todo,
             'title' => 'مارس بنفسك',
-            'href' => $this->resource->todo ? route('todos.show', $this->resource->todo) : '#',
+            'href' => $this->resource->todo ? route('todos.show',
+                $this->resource->todo, false) : '#',
         ]);
     }
 
@@ -95,7 +96,7 @@ class LessonResource extends JsonResource
             'item' => $this->resource->quickScan,
             'title' => 'اختبر نفسك',
             'href' => $this->resource->quickScan ? route('quickScans.show',
-                $this->resource->quickScan) : '#',
+                $this->resource->quickScan, false) : '#',
         ]);
     }
 
@@ -106,7 +107,7 @@ class LessonResource extends JsonResource
             'item' => $this->resource->quiz,
             'title' => 'أسئلة',
             'href' => $this->resource->quiz ? route('quizzes.show',
-                $this->resource->quiz) : '#',
+                $this->resource->quiz, false) : '#',
         ]);
     }
 
@@ -117,7 +118,7 @@ class LessonResource extends JsonResource
             'item' => $this->resource->visual,
             'title' => 'فيديو',
             'href' => $this->resource->visual ? route('visuals.show',
-                $this->resource->visual) : '#',
+                $this->resource->visual, false) : '#',
         ]);
     }
 }

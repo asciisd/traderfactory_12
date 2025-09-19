@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import GuestLayout from '@/layouts/GuestLayout.vue';
-import { __ } from '@/lib/__.js';
+import { $trans } from '@/lib/translator.js';
 import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
     <GuestLayout title="About Us">
-        <Head :title="__('About Us')" />
+        <Head :title="$trans('About Us')" />
         <div class="space-y-24 px-6 py-32 lg:px-8">
             <div class="mx-auto max-w-3xl text-base leading-7">
                 <h1 class="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">من نحن:</h1>

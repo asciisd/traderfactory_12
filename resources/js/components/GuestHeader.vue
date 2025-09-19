@@ -16,7 +16,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import UserMenuContent from '@/components/UserMenuContent.vue';
 import { getInitials } from '@/composables/useInitials';
-import { __ } from '@/lib/__';
+import { $trans } from '@/lib/translator';
 import type { BreadcrumbItem, NavItem, User } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { BookOpen, BookOpenIcon, Folder, GraduationCapIcon, LayoutGrid, Menu } from 'lucide-vue-next';
@@ -42,22 +42,22 @@ const activeItemStyles = computed(
 
 const mainNavItems: NavItem[] = [
     {
-        title: __('Home'),
+        title: $trans('Home'),
         href: '/',
         icon: LayoutGrid,
     },
     {
-        title: __('Courses'),
+        title: $trans('Courses'),
         href: '/courses',
         icon: GraduationCapIcon,
     },
     {
-        title: __('Books'),
+        title: $trans('Books'),
         href: '/books',
         icon: BookOpenIcon,
     },
     {
-        title: __('About Us'),
+        title: $trans('About Us'),
         href: '/about-us',
         icon: BookOpenIcon,
     },

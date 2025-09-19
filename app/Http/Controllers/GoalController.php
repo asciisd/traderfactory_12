@@ -13,8 +13,8 @@ use App\Models\Goal;
 use App\Models\Lesson;
 use App\Models\Section;
 use App\Models\User;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class GoalController extends Controller

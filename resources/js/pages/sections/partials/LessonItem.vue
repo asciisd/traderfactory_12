@@ -43,7 +43,7 @@ const visitActivity = () => {
         return needLogin.value = true;
     }
 
-    router.visit(route('activities.show', [props.activity.href]));
+    router.visit(props.activity.href);
 };
 
 const form = useForm({

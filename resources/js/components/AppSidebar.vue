@@ -7,10 +7,12 @@ import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import { ExternalLink, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import { $trans } from '@/lib/translator';
+
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: $trans('My Orders'),
         href: '/dashboard',
         icon: LayoutGrid,
     },

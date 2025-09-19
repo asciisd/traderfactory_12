@@ -2,21 +2,28 @@
 import SectionHead from './SectionHead.vue';
 import SectionContent from './SectionContent.vue';
 import { Sections } from '@/types/courses';
-import GuestLayout from '@/layouts/GuestLayout.vue';
 import { Separator } from '@/components/ui/separator';
 import { Toaster, toast } from 'vue-sonner';
 import { watch } from 'vue';
+import CourseLayout from '@/layouts/CourseLayout.vue';
+import { Head } from '@inertiajs/vue3';
+import type { BreadcrumbItem, Flash } from '@/types';
+import AppLayout from '@/layouts/AppLayout.vue';
 
 interface Props {
     section: Sections;
     favStatus: boolean | null;
-    flash?: {
-        success?: string;
-        error?: string;
-    };
+    flash?: Flash;
 }
 
 const props = defineProps<Props>();
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: props.section.data.title,
+        href: '#',
+    }
+];
 
 watch(
     () => props.flash?.success,
@@ -29,12 +36,13 @@ watch(
 </script>
 
 <template>
-    <GuestLayout :title="section.data.meta_title" :section="section.data">
+    <AppLayout :breadcrumbs="breadcrumbs">
+        <Head :title="section.data.meta_title" />
         <Toaster position="top-left" dir="rtl" richColors />
-        <div class="max-w-4xl px-4 mx-auto py-12">
+        <div class="max-w-3xl px-4 mx-auto py-12">
             <SectionHead :favStatus="favStatus" :section="section.data" />
             <Separator class="my-8" />
             <SectionContent :canView="section.data.can?.view" :section="section.data" />
         </div>
-    </GuestLayout>
+    </AppLayout>
 </template>

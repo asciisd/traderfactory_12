@@ -59,9 +59,9 @@ enum OrderStatus: string
     public function bgColor(): string
     {
         return match ($this) {
-            self::Captured, self::Success => 'successBG',
-            self::Initiated => 'infoBG',
-            self::Declined, self::Refunded, self::Failure, self::Cancelled => 'dangerBG',
+            self::Captured, self::Success => 'bg-success',
+            self::Initiated => 'bg-info',
+            self::Declined, self::Refunded, self::Failure, self::Cancelled => 'bg-error',
         };
     }
 
