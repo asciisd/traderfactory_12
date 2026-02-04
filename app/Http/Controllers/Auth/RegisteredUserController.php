@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
-use Asciisd\ZohoV8\Models\ZohoContact;
+use Asciisd\ZohoV8\Models\ZohoLead;
 use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
@@ -38,8 +38,8 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'phone' => 'required||phone|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'country' => 'required|string|max:2',
-            'terms' => 'required|accepted',
+            // 'country' => 'required|string|max:2',
+            // 'terms' => 'required|accepted',
         ]);
 
         $utm_data = null;
@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
 
         // Create Zoho Contact
         try {
-            $this->createZohoContact([
+            $this->createZohoLead([
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
@@ -85,9 +85,9 @@ class RegisteredUserController extends Controller
         return to_route('dashboard');
     }
 
-    public function createZohoContact(array $data)
+    public function createZohoLead(array $data)
     {
-        return ZohoContact::create([
+        return ZohoLead::create([
             'First_Name' => $data['first_name'],
             'Last_Name' => $data['last_name'],
             'Email' => $data['email'],
