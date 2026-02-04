@@ -48,6 +48,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(\App\Nova\MetaData::class),
                 ]),
 
+                MenuSection::make('FAQs', [
+                    MenuItem::resource(\App\Nova\Category::class),
+                    MenuItem::resource(\App\Nova\Faq::class),
+                ]),
+
                 NovaPermissions::make()
                     ->menu($request)
                     ->canSee(fn () => auth('admin')->user()?->isSuper()),
