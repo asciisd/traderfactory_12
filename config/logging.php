@@ -127,6 +127,12 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'zoho_sync' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/zoho_sync.log'),
+            'level' => 'error',
+        ],
+
     ],
 
 ];

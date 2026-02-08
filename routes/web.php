@@ -17,6 +17,7 @@ use App\Http\Controllers\VisualController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\FaqController;
 
 Route::get('dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
@@ -100,3 +101,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //    });
 
 Route::get('orders/{order:transaction_id}/receipt', [OrdersController::class, 'receipt'])->name('orders.download');
+
+// get FAQs grouped by category
+Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');

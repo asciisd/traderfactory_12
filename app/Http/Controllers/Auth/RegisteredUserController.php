@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Asciisd\ZohoV8\Models\ZohoLead;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -36,8 +38,8 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'phone' => 'required||phone|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'country' => 'required|string|max:2',
-            'terms' => 'required|accepted',
+            // 'country' => 'required|string|max:2',
+            // 'terms' => 'required|accepted',
         ]);
 
         $utm_data = null;
@@ -59,10 +61,40 @@ class RegisteredUserController extends Controller
             'utm_term' => $utm_data->utm_term ?? null,
         ]);
 
+        // Create Zoho Contact
+        try {
+            $this->createZohoLead([
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'lead_source' => 'trader_factory',
+            ]);
+        } catch (\Throwable $e) {
+            Log::channel('zoho_sync')->error('ZohoContact creation failed', [
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
         event(new Registered($user));
 
         Auth::login($user);
 
         return to_route('dashboard');
     }
+
+    public function createZohoLead(array $data)
+    {
+        return ZohoLead::create([
+            'First_Name' => $data['first_name'],
+            'Last_Name' => $data['last_name'],
+            'Email' => $data['email'],
+            'Phone' => $data['phone'],
+            'Lead_Source' => $data['lead_source'],
+        ]);
+    }
+
+
 }
