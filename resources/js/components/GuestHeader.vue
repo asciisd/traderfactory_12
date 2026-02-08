@@ -57,6 +57,11 @@ const mainNavItems: NavItem[] = [
         icon: BookOpenIcon,
     },
     {
+        title: $trans('Glossary'),
+        href: '/glossary',
+        icon: BookOpenIcon,
+    },
+    {
         title: $trans('About Us'),
         href: '/about-us',
         icon: BookOpenIcon,
