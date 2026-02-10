@@ -1,21 +1,36 @@
-<script setup lang="ts">
-import GuestLayout from '@/layouts/guest/GuestHeaderLayout.vue';
-import type { BreadcrumbItemType } from '@/types';
-import { ConfigProvider } from 'reka-ui';
+<template>
+    <Head :title="title"/>
 
-interface Props {
-    breadcrumbs?: BreadcrumbItemType[];
+    <!--    <survey/>-->
+
+    <Main class="bg-secondary-800 sticky inset-0 top-0"/>
+
+    <div class="min-h-screen">
+        <slot name="header">
+
+        </slot>
+
+        <!-- Page Content -->
+        <main>
+            <slot></slot>
+        </main>
+    </div>
+
+    <FooterSocialLinksOnly/>
+</template>
+
+<script>
+import FooterSocialLinksOnly from "@/components/footers/FooterSocialLinksOnly.vue";
+import {Head} from '@inertiajs/vue3';
+import Main from "@/components/menu/Main.vue";
+import Survey from '@/pages/Survey.vue'
+
+export default {
+    components: {FooterSocialLinksOnly, Survey, Main, Head},
+    props: ['title']
 }
-
-withDefaults(defineProps<Props>(), {
-    breadcrumbs: () => [],
-});
 </script>
 
-<template>
-    <ConfigProvider :dir="$page.props.locale === 'ar' ? 'rtl' : 'ltr'">
-        <GuestLayout :breadcrumbs="breadcrumbs">
-            <slot />
-        </GuestLayout>
-    </ConfigProvider>
-</template>
+<style scoped>
+
+</style>

@@ -34,6 +34,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('E-Learning', [
                     MenuItem::resource(\App\Nova\Course::class),
                     MenuItem::resource(\App\Nova\Section::class),
+                    // MenuItem::resource(\App\Nova\Lesson::class),
                     MenuItem::resource(\App\Nova\Glossary::class),
                 ])->icon('finger-print')->collapsable(),
 

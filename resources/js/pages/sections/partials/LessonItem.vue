@@ -86,7 +86,7 @@ const buyCourse = () => {
                         {{ activity.title }}
                     </p>
                     <p class="truncate text-sm text-gray-500">
-                        {{ activity.item.duration }}
+                        {{ activity.item.duration }} دقيقة
                     </p>
                 </div>
             </div>
