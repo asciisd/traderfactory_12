@@ -18,6 +18,7 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ToolsController;
 
 Route::get('dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
@@ -104,3 +105,14 @@ Route::get('orders/{order:transaction_id}/receipt', [OrdersController::class, 'r
 
 // get FAQs grouped by category
 Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');
+
+// Tools routes
+Route::prefix('tools')->name('tools.')->group(function () {
+    Route::get('/', [ToolsController::class, 'index'])->name('index');
+    Route::get('/position-size', [ToolsController::class, 'positionSize'])->name('position-size');
+    Route::get('/pip-value', [ToolsController::class, 'pipValue'])->name('pip-value');
+    Route::get('/margin-calculator', [ToolsController::class, 'marginCalculator'])->name('margin-calculator');
+});
+
+// webinars route
+Route::get('/webinars', [WelcomeController::class, 'webinars'])->name('webinars');

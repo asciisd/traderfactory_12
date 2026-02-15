@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FaqResource;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Faq;
 
 class FaqController extends Controller
 {
     public function index()
     {
-        $categories = Category::whereHas('faqs', function($q) {
-            $q->where('is_active', true);
-        })
-        ->with(['faqs' => function($q) {
-            $q->where('is_active', true)
-            ->orderBy('order', 'asc');
-        }])
-        ->get();
-
-        return response()->json($categories);
+        $faqs = Faq::active()->with('category')->get();
+        return inertia('faqs/Index', [
+            'faqs' => FaqResource::collection($faqs)->resolve(),
+        ]);
     }
 }

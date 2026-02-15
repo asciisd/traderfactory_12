@@ -20,6 +20,7 @@ class CourseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->resource->id,
             'title' => $this->resource->title,
             'title_line2' => $this->resource->title_line2,
             'description' => $this->resource->description,

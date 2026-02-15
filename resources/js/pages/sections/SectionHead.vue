@@ -36,7 +36,7 @@ const byuCourse = () => {
     <h1>
         <span class="mt-1 block text-2xl font-extrabold tracking-tight sm:text-3xl xl:text-4xl">
             <span class="text-primary block leading-loose">{{ section.title }}</span>
-            <span class="block leading-relaxed">{{ section.description }}</span>
+            <!-- <span class="block leading-relaxed">{{ section.description }}</span> -->
         </span>
     </h1>
     <p class="mt-3 text-base sm:mt-5 sm:text-xl lg:text-lg xl:text-xl" v-html="section.overview"></p>
@@ -57,10 +57,10 @@ const byuCourse = () => {
 
         <div v-if="$page.props.auth.user" class="flex items-center">
             <form @submit.prevent="addToFav">
-                <Button variant="outline" :class="{ 'text-product-pink': favStatus }" :disabled="form.processing" type="submit">
+                <Button variant="outline" :class="{ 'text-primary': favStatus }" :disabled="form.processing" type="submit">
                     <input v-model="form.section" type="hidden" />
                     <span class="inline-flex items-center text-sm sm:text-base">
-                        <HeartIcon :class="[favStatus ? 'fill-product-pink' : 'animate-bounce', 'h-5 w-5 sm:me-2']" />
+                        <HeartIcon :class="[favStatus ? 'fill-primary' : 'animate-bounce', 'h-5 w-5 sm:me-2']" />
                         {{ favStatus ? 'إلغاء من المفضلة' : 'اضف الى المفضلة' }}
                     </span>
                 </Button>

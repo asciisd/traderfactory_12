@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppLayout from '@/Layouts/AppLayout.vue';
+import AppLayout from '@/layouts/AppLayout.vue';
 import CourseCard from '@/pages/courses/partials/CourseCard.vue';
 
 interface Props {

@@ -22,13 +22,12 @@ interface Props {
 const props = defineProps<Props>();
 
 const sendEmailLink = () => {
-    router.post(route('books.download', props.book.id));
+    router.post(route('books.download', props.book.data.id));
 };
 </script>
 
 <template>
     <Head title="Downloads" />
-
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
