@@ -5,7 +5,7 @@
             <div class="hidden lg:block grid grid-rows-1 gap-3 col-span-1">
                 <RadioGroup v-model="groupSelected">
                     <div class="grid grid-cols-1 gap-3">
-                        <RadioGroupOption v-for="(option, index) in revision.items" :key="option.id"
+                        <RadioGroupOption v-for="(option, index) in revision.data.items" :key="option.id"
                                           v-slot="{ active, checked }"
                                           :value="option"
                                           as="template">

@@ -1,10 +1,10 @@
 <template>
-    <AppLayout title="Webinars">
+    <GuestLayout title="Webinars">
         <template #header>
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h1 class="text-3xl font-bold mb-8">
                     الندوات
-                </h2>
+                </h1>
             </div>
         </template>
 
@@ -14,7 +14,7 @@
                 <main>
                     <div class="max-w-7xl">
                         <FullCalendar ref="fullCalendar" :options="calendarOptions"
-                                      class="bg-gray-200 h-screen p-8 rounded-lg"/>
+                                      class="h-screen p-8 rounded-lg"/>
                         <Modal :closeable="true" :show="show" max-width="2xl" @close="close">
                             <Webinar v-if="show" :current-event="currentEvent"/>
                         </Modal>
@@ -23,7 +23,7 @@
 
             </div>
         </div>
-    </AppLayout>
+    </GuestLayout>
 </template>
 
 <script>
@@ -33,11 +33,11 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import Webinar from "./Webinar.vue";
-import AppLayout from "@/layouts/AppLayout.vue";
+import GuestLayout from "@/layouts/GuestLayout.vue";
 import Modal from '@/components/Modal.vue'
 
 export default {
-    components: {FullCalendar, Webinar, AppLayout, Modal},
+    components: {FullCalendar, Webinar, GuestLayout, Modal},
     data() {
         return {
             // webinars: [],

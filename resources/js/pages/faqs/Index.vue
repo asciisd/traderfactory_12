@@ -17,9 +17,9 @@ defineProps({
                 <details v-for="item in faqs" :key="item.id" class="group rounded-lg border border-gray-200 p-4">
                     <summary class="cursor-pointer select-none text-lg font-semibold flex items-center justify-between">
                         <span class="text-primary-700">{{ item.question }}</span>
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+                        <span class="group-open:rotate-180 transition-transform">▾</span>
                     </summary>
-                    <div class="mt-3 prose max-w-none text-gray-700 leading-relaxed" v-html="item.answer"></div>
+                    <div class="mt-3 max-w-none leading-relaxed" v-html="item.answer"></div>
                 </details>
             </div>
         </div>

@@ -25,8 +25,8 @@
             </div>
 
             <!-- Center Content Section -->
-            <div class="lg:p-4 w-full h-auto bg-black bg-opacity-25 col-span-4 rounded-md">
-                <div class="p-6 w-full h-full bg-black bg-opacity-50 rounded-md">
+            <div class="lg:p-4 w-full h-auto bg-background bg-opacity-25 col-span-4 rounded-md">
+                <div class="p-6 w-full h-full bg-background bg-opacity-50 rounded-md">
                     <div class="text-base max-w-prose mx-auto lg:ms-auto lg:me-0 ">
                         <slot v-if="!selectedBox"></slot>
                         <div v-else class="mt-2 description-light"

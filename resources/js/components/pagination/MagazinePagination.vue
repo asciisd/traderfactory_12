@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed inset-x-0 bottom-0 mb-2 h-8 w-full z-10 flex justify-center space-x-2 rtl:space-x-reverse">
+    <nav class="fixed inset-x-0 bottom-0 mb-2 h-8 w-full z-10 flex justify-center space-x-2 ">
         <a :class="[currentPage >= pages ? 'cursor-not-allowed text-gray-100' : 'text-gray-500' ]"
            class="relative inline-flex items-center rounded-md border border-gray-300 bg-white text-sm font-medium hover:bg-gray-50"
            href="#"

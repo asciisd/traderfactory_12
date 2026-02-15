@@ -6,7 +6,7 @@
                 <!-- Empty space for image -->
             </div>
             <div
-                class="pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:mx-auto w-full min-h-screen bg-white bg-opacity-75">
+                class="pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:mx-auto w-full min-h-screen bg-background bg-opacity-75">
                 <div class="text-base max-w-prose mx-auto lg:ms-auto lg:me-0 ">
                     <!-- Content goes here -->
                     <slot></slot>

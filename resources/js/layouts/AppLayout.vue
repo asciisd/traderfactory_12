@@ -50,8 +50,8 @@ const logout = () => {
 
         <Banner/>
 
-        <div class="min-h-screen bg-white">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen ">
+            <nav class=" border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -64,7 +64,7 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 rtl:space-x-reverse sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8  sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :active="route().current('welcome')" :href="route('welcome')">
                                     الرئيسية
                                 </NavLink>
@@ -96,7 +96,7 @@ const logout = () => {
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500  hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition"
                                                 type="button">
                                                 {{ $page.props.auth.user.current_team.name }}
 
@@ -174,7 +174,7 @@ const logout = () => {
 
                                         <span v-else class="inline-flex rounded-md">
                                             <button
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500  hover:text-gray-700 focus:outline-none transition"
                                                 type="button">
                                                 {{ $page.props.auth.user.name }}
 
@@ -378,7 +378,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
+            <header v-if="$slots.header" class=" shadow">
                 <div>
                     <slot name="header"/>
                 </div>

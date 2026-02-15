@@ -5,6 +5,7 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import { computed, ref, reactive } from 'vue';
 import { ClockIcon } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
+import { arabicPlural } from '@/utils/arabicPlural';
 
 interface Props {
     courses: Course[];
@@ -37,7 +38,7 @@ const filteredCourses = computed(() => {
                     <input
                         :id="'section-search-' + course.id"
                         v-model="sectionSearch[course.id]"
-                        class="text-md block h-10 w-full rounded-full border border-gray-300 bg-gray-200 py-2 ps-10 pe-3 placeholder-gray-500 focus:border-pink-500 focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-pink-500 focus:outline-none"
+                        class="text-md block h-10 w-full rounded-full border border-gray-300 bg-gray-200 py-2 ps-10 pe-3 placeholder-gray-500 focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:outline-none"
                         :placeholder="'ابحث في محتوى ' + course.title"
                         type="search"
                     />
@@ -61,10 +62,11 @@ const filteredCourses = computed(() => {
                             <div class="w-full">
                                 <CardTitle>{{ section.title }}</CardTitle>
                                 <CardDescription class="mt-4 flex items-center gap-2 group-hover:text-white">
-                                    <ClockIcon class="h-4 w-4" />
-                                    <p>{{ section.duration }}</p>
-                                    <p>•</p>
-                                    <p>{{ section.lessons_count + ' دروس' }}</p>
+                                    <ClockIcon class="h-4 w-4 text-primary" />
+                                    <span class="text-sm">{{ arabicPlural('دقيقة', section.duration) }}</span>
+                                    <span class="mx-2 text-secondary-500 text-lg font-bold">-</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5zm0 0V10" /></svg>
+                                    <span class="text-sm">{{ arabicPlural('درس', section.lessons_count) }}</span>
                                 </CardDescription>
                             </div>
                         </CardContent>

@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div
-                class="hidden lg:block w-full h-full col-span-2 lg:flex-col lg:justify-start lg:items-start lg:space-y-1 lg:space-x-4 rtl:space-x-reverse lg:ms-4">
+                class="hidden lg:block w-full h-full col-span-2 lg:flex-col lg:justify-start lg:items-start lg:space-y-1 lg:space-x-4  lg:ms-4">
                 <a v-for="leftBox in leftBoxes"
                    class="text-center inline-flex items-center justify-center p-4 w-32 h-32 border border-gray-300 shadow-sm text-base font-medium rounded-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-GoetheBeige-500 focus:bg-GoetheBeige focus:text-white focus:font-semibold"
                    href="#" type="button"

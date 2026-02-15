@@ -10,6 +10,7 @@ use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Outl1ne\NovaSettings\NovaSettings;
 use Sereny\NovaPermissions\NovaPermissions;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -57,6 +58,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 NovaPermissions::make()
                     ->menu($request)
                     ->canSee(fn () => auth('admin')->user()?->isSuper()),
+
+                // NovaSettings::make()
+                //     ->menu($request),
 
                 LogViewer::make()
                     ->menu($request)
@@ -122,7 +126,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             NovaPermissions::make(),
-            LogViewer::make()
+            LogViewer::make(),
+            NovaSettings::make(),
         ];
     }
 

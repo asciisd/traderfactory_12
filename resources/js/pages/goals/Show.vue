@@ -38,9 +38,9 @@ onBeforeUnmount(() => {
         <div class="flex h-full flex-1 flex-col items-center justify-center gap-4 p-4">
             <Card class="prose min-w-lg">
                 <CardHeader>
-                    <CardTitle class="text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">{{ goal.data.title }} </CardTitle>
+                    <CardTitle class="text-primary text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">{{ goal.data.title }} </CardTitle>
                 </CardHeader>
-                <CardContent class="marker:text-product-pink list-inside">
+                <CardContent class="marker:text-primary list-inside">
                     <ul role="list">
                         <li v-for="(point, index) in goal.data.points" :key="index">{{ point }}</li>
                     </ul>

@@ -1,33 +1,33 @@
 <template>
     <Popover class="z-20" open="true">
         <div
-            class="flex max-w-7xl mx-auto justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10 rtl:space-x-reverse">
+            class="flex max-w-7xl mx-auto justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10 ">
             <div>
                 <Link :href="route('welcome')" class="flex">
                     <span class="sr-only">Traderfactory</span>
                     <application-logo-light class="h-8 w-auto sm:h-10"/>
                 </Link>
             </div>
-            <div class="hidden space-x-8 rtl:space-x-reverse sm:-my-px sm:ms-10 sm:flex">
+            <div class="hidden space-x-8  sm:-my-px sm:ms-10 sm:flex">
                 <Link
                     v-for="item in navigation"
                     :key="item.href"
                     :href="item.href"
-                    class="text-base font-medium text-white hover:text-gray-300"
+                    class="text-base font-medium"
                 >
                     {{ item.name }}
                 </Link>
             </div>
             <div class="-ms-2 -my-2 md:hidden">
                 <PopoverButton
-                    class="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-transparent focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                    class="bg-transparent rounded-md p-2 inline-flex items-center justify-center hover:bg-transparent focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                     <span class="sr-only">Open menu</span>
                     <Bars3Icon aria-hidden="true" class="h-6 w-6"/>
                 </PopoverButton>
             </div>
 
             <div class="hidden md:flex-1 md:flex md:items-center md:justify-between">
-                <PopoverGroup as="nav" class="flex space-x-10 rtl:space-x-reverse">
+                <PopoverGroup as="nav" class="flex space-x-10 ">
                 </PopoverGroup>
                 <div v-if="$page.props.canRegister" class="flex items-center md:ms-12">
                     <primary-link-button v-if="$page.props.auth.user" :href="route('dashboard')"

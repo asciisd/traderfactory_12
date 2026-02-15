@@ -3,7 +3,7 @@
 
     <!--    <survey/>-->
 
-    <Main class="bg-secondary-800 sticky inset-0 top-0"/>
+    <Main class="bg-secondary sticky inset-0 top-0"/>
 
     <div class="min-h-screen">
         <slot name="header">
