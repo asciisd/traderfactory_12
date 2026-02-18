@@ -24,7 +24,7 @@ Route::get('dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// require __DIR__.'/settings.php';
+require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -98,7 +98,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('user.profile.show');
     Route::post('/profile', [ProfileController::class, 'update'])->name('user.profile.update');
     Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('user.password.edit');
-Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('user.password.update');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('user.password.update');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])

@@ -54,11 +54,19 @@ export interface User {
     id: number;
     first_name: string;
     last_name: string;
+    phone: string
     email: string;
     profile_photo_url?: string;
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
+}
+
+export interface Metadata {
+    title: string;
+    keywords: string;
+    description: string;
+    image: string;
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;

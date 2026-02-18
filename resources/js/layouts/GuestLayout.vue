@@ -1,36 +1,20 @@
+<script setup lang="ts">
+import FooterSocialLinksOnly from '@/components/footers/FooterSocialLinksOnly.vue';
+import { Head } from '@inertiajs/vue3';
+import GuestHeaderLayout from './guest/GuestHeaderLayout.vue';
+</script>
+
 <template>
-    <Head :title="title"/>
+    <Head :title="title" />
 
-    <!--    <survey/>-->
-
-    <Main class="bg-secondary sticky inset-0 top-0"/>
-
-    <div class="min-h-screen">
-        <slot name="header">
-
-        </slot>
+    <GuestHeaderLayout class="min-h-screen">
+        <slot name="header"> </slot>
 
         <!-- Page Content -->
         <main>
             <slot></slot>
         </main>
-    </div>
+    </GuestHeaderLayout>
 
-    <FooterSocialLinksOnly/>
+    <FooterSocialLinksOnly />
 </template>
-
-<script>
-import FooterSocialLinksOnly from "@/components/footers/FooterSocialLinksOnly.vue";
-import {Head} from '@inertiajs/vue3';
-import Main from "@/components/menu/Main.vue";
-import Survey from '@/pages/Survey.vue'
-
-export default {
-    components: {FooterSocialLinksOnly, Survey, Main, Head},
-    props: ['title']
-}
-</script>
-
-<style scoped>
-
-</style>
