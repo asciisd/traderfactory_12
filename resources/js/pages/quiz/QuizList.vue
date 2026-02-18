@@ -1,12 +1,12 @@
 <template>
     <QuizLayout :image-url="quizBegin ? '' : quiz.s3_image">
         <div v-if="quizBegin">
-            <div v-if="idx < count" class="bg-white rounded-lg shadow-xl">
+            <div v-if="idx < count" class="bg-semi rounded-lg shadow-xl">
                 <quiz-item :question="questions[idx]" :s3_image="quiz.s3_image" @nextQuestion="nextQuestion"
                            @questionAnswer="answered"/>
             </div>
 
-            <div v-else class="p-12 bg-white rounded-lg shadow-lg w-full mt-8">
+            <div v-else class="p-12 bg-semi rounded-lg shadow-lg w-full mt-8">
                 <div>
                     <QuizResult :correct-answers="correctAnswers" :total-answers="count" :wrong-answers="wrongAnswers"
                                 @resetQuiz="resetQuiz"/>

@@ -30,8 +30,8 @@ defineProps({
     </Head>
 
     <div>
-        <ExitMenu v-if="$page.component !== 'Section/Index'" :slug="section.slug"/>
-        <SideOver :slug="section.slug"/>
+        <ExitMenu v-if="$page.component !== 'Section/Index'" :slug="section.data.slug"/>
+        <SideOver :slug="section.data.slug"/>
         <slot></slot>
     </div>
 </template>

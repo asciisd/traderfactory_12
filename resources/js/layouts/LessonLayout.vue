@@ -6,7 +6,8 @@
     </Head>
 
     <div>
-        <ExitMenu v-if="$page.component !== 'Section/Index'" :slug="lesson.section_slug"/>
+        <ExitMenu v-if="$page.component !== 'Section/Index'" :slug="lesson.data.section_slug"/>
+
         <slot></slot>
     </div>
 </template>

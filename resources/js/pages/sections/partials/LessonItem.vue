@@ -14,6 +14,14 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogFooter,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { ref } from 'vue';
 
 const page = usePage();
@@ -37,14 +45,20 @@ interface Props {
 const props = defineProps<Props>();
 
 const needLogin = ref(false);
+const showVideoModal = ref(false);
 
 const visitActivity = () => {
     if (!props.canView) {
         return needLogin.value = true;
     }
-
+    if (props.activity.model === 'Visual') {
+        showVideoModal.value = true;
+        return;
+    }
     router.visit(props.activity.href);
 };
+
+
 
 const form = useForm({
     course_id: props.course_id,
@@ -92,6 +106,21 @@ const buyCourse = () => {
             </div>
         </div>
     </div>
+
+    <!-- Video Modal -->
+    <Dialog v-model:open="showVideoModal">
+        <DialogContent class="max-w-4xl">
+            <div class="w-full aspect-video bg-background">
+                <video
+                    v-if="activity.item.video_url"
+                    :src="`${activity.item.video_url}`"
+                    :poster="activity.item.video_poster ? `${activity.item.video_poster}` : undefined"
+                    controls
+                    class="w-full h-full rounded"
+                />
+            </div>
+        </DialogContent>
+    </Dialog>
 
     <AlertDialog :open="needLogin">
         <AlertDialogContent>

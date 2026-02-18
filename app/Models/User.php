@@ -28,10 +28,15 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var list<string>
      */
+    // protected $fillable = [
+    //     'first_name', 'last_name', 'email', 'password', 'phone', 'country', 'last_login_at',
+    //     'utm_source', 'utm_content', 'utm_medium', 'utm_campaign', 'utm_term'
+    // ];
+
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone', 'country', 'last_login_at',
-        'utm_source', 'utm_content', 'utm_medium', 'utm_campaign', 'utm_term'
-    ];
+    'first_name', 'last_name', 'email', 'password', 'phone', 'country', 'last_login_at',
+    'utm_source', 'utm_content', 'utm_medium', 'utm_campaign', 'utm_term', 'profile_photo_path'
+];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -131,4 +136,6 @@ class User extends Authenticatable implements MustVerifyEmail
             get: fn ($value, array $attributes) => $attributes['first_name'].' '.$attributes['last_name'],
         );
     }
+
+
 }

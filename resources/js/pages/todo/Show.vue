@@ -8,17 +8,17 @@
                     <button ref="trueButtonPressed"
                             class="col-span-2 lg:rounded-lg w-full inline-flex justify-center border border-transparent shadow-sm px-4 py-2 bg-secondary-600 text-base font-semibold text-white hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 sm:text-md"
                             type="button" @click="showTodo(1)">
-                        {{ todo.title }}
+                        {{ todo.data.title }}
                     </button>
                 </div>
             </template>
 
             <!-- Left side code -->
-            <div class="description" v-html="todo.description"/>
+            <div class="description" v-html="todo.data.description"/>
         </half-screen-layout>
     </div>
 
-    <TodoLayout v-else :image-url="todo.s3_image">
+    <TodoLayout v-else :image-url="todo.data.s3_image">
         <TransitionRoot
             :show="!todoBegin"
             appear

@@ -1,8 +1,8 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-    <div :style="{backgroundImage: `url(${s3_image})`}"
+    <div :style="{backgroundImage: `url(${background_url})`}"
          class="bg-center bg-cover bg-no-repeat h-72 rounded-t-lg shadow-lg w-full">
-        <div class="rounded-t-lg w-full h-full bg-black bg-opacity-50 flex flex-col justify-center px-12">
+        <div class="rounded-t-lg w-full h-full bg-opacity-50 flex flex-col justify-center px-12">
             <div v-if="hasAnswer">
                 <TransitionRoot
                     :show="isRight"
@@ -37,7 +37,7 @@
                 </TransitionRoot>
             </div>
             <div class="text-center">
-                <h3 class="text-lg leading-6 font-semibold text-white">
+                <h3 class="text-lg leading-6 font-semibold text-foreground">
                     {{ question['question'] }}
                 </h3>
             </div>
@@ -54,7 +54,7 @@
                 enter-to="translate-x-0 opacity-100">
 
                 <button ref="trueButtonPressed"
-                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:text-sm"
+                        class="bg-light-success w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-dark-success hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:text-sm"
                         type="button" @click="answer(1)">
                     صح
                 </button>
@@ -69,7 +69,7 @@
                 enter-to="translate-x-0 opacity-100">
 
                 <button ref="falseButtonPressed"
-                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:text-sm"
+                        class="bg-light-error w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-dark-error hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:text-sm"
                         type="button" @click="answer(0)">
                     خطأ
                 </button>
@@ -84,7 +84,7 @@
                 enter-to="translate-x-0 opacity-100">
 
                 <button ref="trueButtonPressed"
-                        class="col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-secondary-600 text-base font-medium text-white hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 sm:text-sm"
+                        class="bg-product-orange col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-foreground hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 sm:text-sm"
                         type="button" @click="nextQuestion">
                     التالي
                 </button>
@@ -104,7 +104,7 @@ export default defineComponent({
         s3_image: '',
         question: {
             type: Object,
-            default: null
+            default: '/img/img.jpg',
         }
     },
     data() {

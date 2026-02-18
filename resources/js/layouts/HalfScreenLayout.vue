@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="w-full h-full">
-                <!-- Empty space for image -->
+                <!-- empty space for image -->
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@ export default {
     props: {
         imageUrl: {
             type: String,
-            default: ''
+            default: '/img/img.jpg'
         }
     }
 }

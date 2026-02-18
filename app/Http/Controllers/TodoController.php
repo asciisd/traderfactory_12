@@ -23,6 +23,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
+        // return  TodoResource::make($todo);
         return Inertia::render('todo/Show', [
             'todo' => TodoResource::make($todo),
             'lesson' => LessonResource::make($todo->lesson),

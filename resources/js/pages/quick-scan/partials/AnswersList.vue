@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
     <div>
-        <h2 class="text-lg font-semibold text-secondary mb-8">{{ question.question }}</h2>
+        <h2 class="text-lg font-semibold text-foreground-500 mb-8">{{ question.question }}</h2>
 
         <RadioGroup v-model="answer" class="mt-2">
             <RadioGroupLabel class="sr-only">
@@ -12,7 +12,7 @@
                                   v-slot="{ active, checked }"
                                   :value="option.choice" as="template" @click="questionAnswer">
                     <div
-                        :class="[active ? 'ring-2 ring-offset-2 ring-primary-500' : '', checked ? 'bg-primary-600 border-transparent text-white hover:bg-primary-700' : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50', 'cursor-pointer focus:outline-none border rounded-md py-3 px-3 flex items-center text-sm font-medium uppercase sm:flex-1']">
+                        :class="[active ? 'ring-2 ring-offset-2 ring-foreground' : '', checked ? 'bg-foreground border-transparent text-background hover:bg-foreground' : 'bg-background border-foreground text-foreground hover:bg-background', 'cursor-pointer focus:outline-none border rounded-md py-3 px-3 flex items-center text-sm font-medium uppercase sm:flex-1']">
                         <RadioGroupLabel as="p">
                             {{ option.description }}
                         </RadioGroupLabel>

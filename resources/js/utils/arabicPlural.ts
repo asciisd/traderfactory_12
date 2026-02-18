@@ -5,10 +5,12 @@ export function arabicPlural(word: string, count: number): string {
     };
     const [singular, dual, plural] = forms[word] || [word, word, word];
 
-    if (count === 0) return `0 ${plural}`;
-    if (count === 1) return `1 ${singular}`;
-    if (count === 2) return dual;
-    if (count >= 3 && count <= 10) return `${count} ${plural}`;
-    if (count >= 11) return `${count} ${singular}`;
-    return `${count} ${word}`;
+    let counter = Number(count);
+
+    if (counter === 0) return `0 ${plural}`;
+    if (counter === 1) return `1 ${singular}`;
+    if (counter === 2) return dual;
+    if (counter >= 3 && counter <= 10) return `${counter} ${plural}`;
+    if (counter >= 11) return `${counter} ${singular}`;
+    return `${counter} ${word}`;
 }

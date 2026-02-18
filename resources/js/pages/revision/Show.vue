@@ -9,9 +9,8 @@
                                           v-slot="{ active, checked }"
                                           :value="option"
                                           as="template">
-                            <div
-                                :class="[active ? 'ring-2 ring-offset-2 ring-primary' : '', checked ? 'bg-primary-600 border-transparent text-white hover:bg-primary-700' : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50', 'cursor-pointer focus:outline-none border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium sm:flex-1']">
-                                <RadioGroupLabel as="p">
+                            <div :class="[active ? 'ring-2 ring-offset-2 ring-foreground' : '', checked ? 'bg-product-orange border-product-orange text-white hover:bg-product-orange font-bolder' : 'bg-background border-foreground-200 text-gray-900 hover:bg-product-orange font-medium', 'cursor-pointer focus:outline-none border rounded-md py-3 px-3 flex items-center justify-center sm:flex-1']">
+                                <RadioGroupLabel as="p" class="text-foreground">
                                     {{ option.title }}
                                 </RadioGroupLabel>
                             </div>
@@ -29,9 +28,9 @@
                 </select>
             </div>
 
-            <div v-if="groupSelected" class="h-full w-full bg-white p-12 rounded-lg col-span-2">
-                <h3 class="title mt-2" v-text="groupSelected.title"/>
-                <div class="description mt-8" v-html="groupSelected.description"/>
+            <div v-if="groupSelected" class="h-full w-full bg-background p-12 rounded-lg col-span-2 shadow-2xl">
+                <h3 class="title mt-2 text-foreground" v-text="groupSelected.title"/>
+                <div class="description mt-8 text-foreground" v-html="groupSelected.description"/>
             </div>
 
         </div>
@@ -67,7 +66,7 @@ export default {
     },
     computed: {
         totalPages() {
-            return this.revision.items.length;
+            return this.revision.data.items.length;
         },
         pageIndex() {
             return this.currentPage - 1;
@@ -78,7 +77,7 @@ export default {
     },
     watch: {
         groupSelected: function (newVal, oldVal) {
-            let newIndex = this.revision.items.indexOf(newVal)
+            let newIndex = this.revision.data.items.indexOf(newVal)
             console.log(newIndex);
             this.markComplete(newIndex);
         }
@@ -99,7 +98,7 @@ export default {
         }
     },
     beforeUnmount() {
-        if (this.revision.user_progress < this.userProgress.toFixed(2)) {
+        if (this.revision.data.user_progress < this.userProgress.toFixed(2)) {
             useForm({
                 user_progress: this.userProgress.toFixed(2),
             }).put(route('revisions.progress', this.revision), {

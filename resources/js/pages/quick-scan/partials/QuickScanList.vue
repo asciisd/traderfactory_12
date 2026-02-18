@@ -1,5 +1,5 @@
 <template>
-    <QuickScanLayout :image-url="quickScanBegin ? '' : quickScan.s3_image">
+    <QuickScanLayout :image-url="quickScanBegin ? '' : quickScan.data.s3_image">
         <div v-if="quickScanBegin">
             <!--  Questions  -->
             <div v-if="!showResults">
@@ -12,7 +12,7 @@
                                 enter-to="translate-x-0 opacity-100">
 
                     <button
-                        class="mt-12 col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-secondary-600 text-base font-medium text-white hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 sm:text-sm"
+                        class="mt-12 col-span-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-product-orange-600 text-base font-medium text-foreground hover:bg-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-background sm:text-sm"
                         type="button"
                         @click="showResults = true">
                         انهاء الاختبار
@@ -22,7 +22,7 @@
             </div>
 
             <!--  Results  -->
-            <div v-else class="p-12 bg-white rounded-lg shadow-lg w-full mt-8">
+            <div v-else class="p-12 bg-background rounded-lg shadow-lg w-full mt-8">
                 <div>
                     <QuickScanResult :answers="answers" :questions="questions" :total-answers="totalPages"
                                      @resetQuickScan="resetQuickScan"/>

@@ -1,9 +1,9 @@
 <template>
-    <div :style="{backgroundImage: `url(${question.image})`}"
+    <div :style="{backgroundImage: `url(${question.s3_image})`}"
          class="bg-center bg-cover bg-no-repeat h-72 rounded-t-lg shadow-lg w-full">
-        <div class="rounded-t-lg w-full h-full bg-black bg-opacity-50 flex flex-col justify-center px-12">
+        <div class="rounded-t-lg w-full h-full bg-background bg-opacity-50 flex flex-col justify-center px-12">
             <div class="text-center">
-                <h3 class="text-lg leading-6 font-semibold text-white">
+                <h3 class="text-lg leading-6 font-semibold text-foreground">
                     {{ question['question'] }}
                 </h3>
             </div>
@@ -20,7 +20,7 @@
                 enter-to="translate-x-0 opacity-100">
 
                 <button ref="trueButtonPressed"
-                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:text-sm"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-product-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-product-orange-500 sm:text-sm"
                         type="button" @click="answered(true)">
                     صح
                 </button>
