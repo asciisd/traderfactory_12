@@ -3,21 +3,22 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GlossaryController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuickScanController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\ToolsController;
 use App\Http\Controllers\VisualController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\FaqController;
 
 Route::get('dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
@@ -92,9 +93,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('visuals', VisualController::class)->only(['show']);
     Route::resource('quickScans', QuickScanController::class)->only(['show']);
     Route::post('orders/{type}/{id}', [OrdersController::class, 'order'])->name('orders.create');
+
+    // profile routes
+    Route::get('/profile', [ProfileController::class, 'show'])->name('user.profile.show');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('user.profile.update');
+    Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('user.password.edit');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('user.password.update');
 });
 
-//Route::middleware(['auth:sanctum', 'verified'])
+// Route::middleware(['auth:sanctum', 'verified'])
 //    ->group(function () {
 //        Route::put('user/generate_referral_token',
 //            [UserController::class, 'generateReferralToken'])->name('user.generate-referral-token');
@@ -104,3 +111,14 @@ Route::get('orders/{order:transaction_id}/receipt', [OrdersController::class, 'r
 
 // get FAQs grouped by category
 Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');
+
+// Tools routes
+Route::prefix('tools')->name('tools.')->group(function () {
+    Route::get('/', [ToolsController::class, 'index'])->name('index');
+    Route::get('/position-size', [ToolsController::class, 'positionSize'])->name('position-size');
+    Route::get('/pip-value', [ToolsController::class, 'pipValue'])->name('pip-value');
+    Route::get('/margin-calculator', [ToolsController::class, 'marginCalculator'])->name('margin-calculator');
+});
+
+// webinars route
+Route::get('/webinars', [WelcomeController::class, 'webinars'])->name('webinars');

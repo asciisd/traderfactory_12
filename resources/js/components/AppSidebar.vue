@@ -3,12 +3,11 @@ import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
+import { $trans } from '@/lib/translator';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { ExternalLink, LayoutGrid } from 'lucide-vue-next';
+import { Book, BookOpen, ExternalLink, Heart, Key, LayoutGrid, User } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
-import { $trans } from '@/lib/translator';
-
 
 const mainNavItems: NavItem[] = [
     {
@@ -16,17 +15,37 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: $trans('My Profile'),
+        href: '/profile',
+        icon: User,
+    },
+    {
+        title: 'تعديل كلمة السر',
+        href: '/profile/password',
+        icon: Key,
+    },
+    {
+        title: 'المفضلة',
+        href: '/favorites',
+        icon: Heart,
+    },
+    {
+        title: 'الدورات',
+        href: '/courses',
+        icon: BookOpen,
+    },
+    {
+        title: 'الكتب',
+        href: '/books',
+        icon: Book,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Caveo Brokerage',
-        href: 'https://caveo.com.kw',
-        icon: ExternalLink,
-    },
-    {
-        title: 'ASCIISD',
-        href: 'https://asciisd.com',
+        title: 'Go To Home Page',
+        href: '/',
         icon: ExternalLink,
     },
 ];

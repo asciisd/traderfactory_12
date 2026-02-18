@@ -46,7 +46,7 @@ const transferFeatures = [
             </svg>
 
             <div class="relative">
-                <h2 class="text-center text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
+                <h2 class="text-primary text-center text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
                     أفضل طريقة لتعلم التداول هو ان تتداول بنفسك.. هل أنت جاهز؟
                 </h2>
                 <p class="mx-auto mt-4 max-w-3xl text-center text-xl">
@@ -56,7 +56,7 @@ const transferFeatures = [
 
             <div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8">
                 <div class="relative">
-                    <h3 class="text-2xl font-bold tracking-tight sm:text-3xl">
+                    <h3 class="text-primary text-2xl font-bold tracking-tight sm:text-3xl">
                         تدرب على استخدام أحدث أساليب التداول والاستثمار في أسواق المال
                     </h3>
                     <p class="mt-3 text-lg">
@@ -68,9 +68,9 @@ const transferFeatures = [
                         <div v-for="item in transferFeatures" :key="item.id" class="relative">
                             <dt>
                                 <div class="absolute flex h-12 w-12 items-center justify-center rounded-xl">
-                                    <component :is="item.icon" aria-hidden="true" class="h-8 w-8" />
+                                    <component :is="item.icon" aria-hidden="true" class="h-8 w-8 text-primary" />
                                 </div>
-                                <p class="ms-16 text-lg leading-6 font-bold">{{ item.name }}</p>
+                                <p class="ms-16 text-lg leading-6 font-bold text-primary">{{ item.name }}</p>
                             </dt>
                             <dd class="ms-16 mt-2 text-base">{{ item.description }}</dd>
                         </div>

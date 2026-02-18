@@ -7,19 +7,23 @@ use App\Contracts\ProgressiveInterface;
 use App\Http\Resources\LessonResource;
 use App\Traits\HasEmailOnEvents;
 use App\Traits\Progressive;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Storage;
 use Nagy\LaravelRating\Traits\Rateable;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 class Lesson extends Model implements EventableInterface, ProgressiveInterface, Sortable
 {
+    use HasEmailOnEvents, Progressive;
+
     /** @use HasFactory<\Database\Factories\LessonFactory> */
     use HasFactory;
-    use HasEmailOnEvents, Progressive;
+
     use Rateable, SortableTrait;
 
     public array $sortable = [
@@ -29,7 +33,7 @@ class Lesson extends Model implements EventableInterface, ProgressiveInterface, 
         'sort_on_has_many' => true,
     ];
 
-    protected $appends = ['user_progress'];
+    protected $appends = ['user_progress', 'lesson_video_url'];
 
     protected $fillable = ['name', 'duration', 'slug'];
 
@@ -137,5 +141,18 @@ class Lesson extends Model implements EventableInterface, ProgressiveInterface, 
     public function asResource()
     {
         return LessonResource::make($this->refresh());
+    }
+
+    public function lessonVideoUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if ($this->visual && $this->visual->video_url) {
+                    return Storage::disk('s3')->url($this->visual->video_url);
+                }
+
+                return null;
+            }
+        );
     }
 }

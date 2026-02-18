@@ -24,7 +24,7 @@ defineProps<Props>();
 
         <div class="mt-8 text-center lg:mt-12">
             <h1 class="text-5xl leading-tight font-extrabold">
-                <span class="text-pink-900">الأستثمار في سوق العملات</span>
+                <span class="text-primary">الأستثمار في سوق العملات</span>
             </h1>
         </div>
 

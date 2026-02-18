@@ -71,6 +71,6 @@ trait HasProfilePhoto
      */
     protected function profilePhotoDisk(): string
     {
-        return 's3';
+        return 'public';
     }
 }

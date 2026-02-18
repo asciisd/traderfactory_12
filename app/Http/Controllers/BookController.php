@@ -34,6 +34,7 @@ class BookController extends Controller
      */
     public function downloadPage(Book $book)
     {
+        // dd($book->file_src);
         // Check if the user owns the book
         if (! $book->purchased()) {
             return redirect()->route('books.index')->with('error', 'لا يمكنك تحميل هذا الكتاب لأنك لم تشتريه بعد');
@@ -55,11 +56,16 @@ class BookController extends Controller
         // Generate temporary download URL
         $url = null;
         if ($book->file_src) {
-            $path = json_decode($book->file_src)->path;
-            $url = Storage::disk('s3_public')->temporaryUrl($path, now()->addMinutes(30));
+            $fileObj = json_decode($book->file_src);
+            if ($fileObj && isset($fileObj->path)) {
+                $path = $fileObj->path;
+                $url = Storage::disk('s3_public')->temporaryUrl($path, now()->addMinutes(30));
+            } 
+            // $path = json_decode($book->file_src)->path;
+            // $url = Storage::disk('s3_public')->temporaryUrl($path, now()->addMinutes(30));
         }
 
-        return Inertia::render('Books/Download', [
+        return Inertia::render('books/Download', [
             'book' => BookResource::make($book),
             'downloadUrl' => $url,
         ]);

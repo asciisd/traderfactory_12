@@ -115,7 +115,7 @@ class LessonResource extends JsonResource
     {
         return collect([
             'model' => 'Visual',
-            'item' => $this->resource->visual,
+            'item' => VisualResource::make($this->resource->visual),
             'title' => 'فيديو',
             'href' => $this->resource->visual ? route('visuals.show',
                 $this->resource->visual, false) : '#',
